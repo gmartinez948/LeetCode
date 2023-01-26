@@ -1,21 +1,26 @@
 
 
 function deleteGreatestValue(grid: number[][]): number {
-  let counter: number = 0; 
-  let tempArray: number[] = [];
-  let i = 0;
-  let copy: number[] = grid[0];
-  while (i < copy.length) {
-    tempArray = [];
-    for (let i = 0; i < grid.length; i++) {
-      let sorted = grid[i].sort((a, b) => a - b);
-      console.log(sorted)
-      tempArray.push(sorted.pop())
+  let arr: number[] = []
+    for(let k = 0; k <= grid.length; k++) {
+      // create a placeholder array to compare each row's max value
+      let temp: number[] = []
+      for (let i = 0; i < grid.length; i++) {
+          let max: number = 0;
+          // iterate over the individual rows
+          for (let j = 0; j < grid[i].length; j++) {
+              max = Math.max(max, grid[i][j])
+          }
+        console.log(max)
+          temp.push(max)
+          grid[i].splice(grid[i].indexOf(max), 1)
+          if(grid[i].length > 0){
+              k = 0
+          }
+      }
+      arr.push(Math.max(...temp))
     }
-    counter += Math.max(...tempArray);
-    i++;
-  }
-  return counter;
+    return arr.reduce( (pv, cv) => pv + cv, 0)
 };
 
 console.log(deleteGreatestValue([[11,2,4],[8,3,1]]))

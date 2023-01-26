@@ -1,20 +1,23 @@
 "use strict";
 function deleteGreatestValue(grid) {
-  let counter = 0;
-  let tempArray = [];
-  let i = 0;
-  let copy = grid[0];
-  while (i < copy.length) {
-    tempArray = [];
-    for (let i2 = 0; i2 < grid.length; i2++) {
-      let sorted = grid[i2].sort((a, b) => a - b);
-      console.log(sorted);
-      tempArray.push(sorted.pop());
+  let arr = [];
+  for (let k = 0; k <= grid.length; k++) {
+    let temp = [];
+    for (let i = 0; i < grid.length; i++) {
+      let max = 0;
+      for (let j = 0; j < grid[i].length; j++) {
+        max = Math.max(max, grid[i][j]);
+      }
+      console.log(max);
+      temp.push(max);
+      grid[i].splice(grid[i].indexOf(max), 1);
+      if (grid[i].length > 0) {
+        k = 0;
+      }
     }
-    counter += Math.max(...tempArray);
-    i++;
+    arr.push(Math.max(...temp));
   }
-  return counter;
+  return arr.reduce((pv, cv) => pv + cv, 0);
 }
 ;
 console.log(deleteGreatestValue([[11, 2, 4], [8, 3, 1]]));
