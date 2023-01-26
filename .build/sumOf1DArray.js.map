@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../sumOf1DArray.ts"],
+  "sourcesContent": ["function runningSum(nums: number[]): number[] {\n    let total: number = 0\n    let result: number[] = [];\n    for (let i = 0; i < nums.length; i++) {\n        total += nums[i]\n        result.push(total)\n    }\n    // return the result array\n    return result;\n\n};"],
+  "mappings": ";AAAA,SAAS,WAAW,MAA0B;AAC1C,MAAI,QAAgB;AACpB,MAAI,SAAmB,CAAC;AACxB,WAAS,IAAI,GAAG,IAAI,KAAK,QAAQ,KAAK;AAClC,aAAS,KAAK;AACd,WAAO,KAAK,KAAK;AAAA,EACrB;AAEA,SAAO;AAEX;AAAC;",
+  "names": []
+}
